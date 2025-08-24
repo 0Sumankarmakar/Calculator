@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <button onclick="testApi()">Test Backend</button>
+    <pre id="output"></pre>
+
+    <script>
+      async function testApi() {
+        const res = await fetch("http://localhost:5000/calculate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ expression: "2+2" })
+        });
+        const data = await res.json();
+        document.getElementById("output").textContent = JSON.stringify(data);
+      }
+    </script>
+  </body>
+</html>
